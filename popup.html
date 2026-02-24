@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      width: 320px;
+      padding: 14px;
+      margin: 0;
+      background: #0f0f0f;
+      color: #e0e0e0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      background: #4caf50;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 6px #4caf5088;
+    }
+    h2 { margin: 0; font-size: 14px; color: #fff; }
+    .subtitle { font-size: 11px; color: #666; margin-bottom: 12px; }
+
+    .section { margin-top: 12px; }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: #555;
+      font-weight: 600;
+    }
+    .count {
+      font-size: 10px;
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 1px 7px;
+      color: #888;
+    }
+
+    /* Seed hosts — compact pills */
+    .seed-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+    .pill {
+      background: #141428;
+      border: 1px solid #2a2a50;
+      border-radius: 3px;
+      padding: 2px 7px;
+      font-size: 10px;
+      color: #6699cc;
+    }
+
+    /* Learned hosts — rows with remove button */
+    .learned-list { display: flex; flex-direction: column; gap: 4px; }
+    .learned-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #141e14;
+      border: 1px solid #1e3a1e;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      color: #7ecf7e;
+    }
+    .learned-row .host { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: #555;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 0 0 0 8px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .remove-btn:hover { color: #e06060; }
+
+    .empty { font-size: 11px; color: #444; font-style: italic; padding: 4px 0; }
+
+    .new-tag {
+      font-size: 9px;
+      background: #4caf5022;
+      border: 1px solid #4caf5055;
+      color: #4caf50;
+      border-radius: 3px;
+      padding: 1px 5px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .divider { border: none; border-top: 1px solid #1e1e1e; margin: 12px 0; }
+
+    .tip {
+      font-size: 10px;
+      color: #555;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="dot"></div>
+    <h2>Ad Redirect Bypass</h2>
+  </div>
+  <div class="subtitle">Auto-learns new redirect sites from your browsing.</div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="label">🌱 Seed hosts</span>
+      <span class="count" id="seed-count">0</span>
+    </div>
+    <div class="seed-grid" id="seed-hosts"></div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <div class="section-header">
+      <span class="label">⚡ Auto-learned</span>
+      <span class="count" id="learned-count">0</span>
+    </div>
+    <div class="learned-list" id="learned-hosts">
+      <div class="empty">None yet — will populate as you browse.</div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+  <div class="tip">
+    New redirect sites are detected automatically when 2+ redirect hops are observed.
+    Click ✕ to remove a learned host.
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

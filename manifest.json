@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Ad Redirect Bypass (Auto) by Lanzy",
-  "description": "Auto-bypass ad redirect landing pages by decoding URL-safe Base64 params and redirecting immediately (Manifest V3 compatible).",
-  "version": "1.0",
+  "name": "Ad Redirect Bypass",
+  "description": "Follows the redirect chain (302 Location headers) to extract the final destination URL and navigates there immediately.",
+  "version": "2.0",
   "permissions": [
-    "activeTab",
-    "scripting",
-    "storage"
+    "webRequest",
+    "storage",
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -16,16 +16,13 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "content.js"
-      ],
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
       "run_at": "document_start"
     }
   ],
   "action": {
-    "default_title": "Ad Bypass (Auto)"
+    "default_title": "Ad Bypass",
+    "default_popup": "popup.html"
   }
 }
